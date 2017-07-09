@@ -1,0 +1,27 @@
+[user]
+	name = mewa
+	email = marcin.k.chmiel@gmail.com
+[push]
+	default = simple
+[core]
+	editor = emacs -nw
+[alias]
+	ss = status
+	br = branch
+	l = log
+	lg = log --graph
+[color]
+	ui = auto
+	diff = auto
+	blame = true
+[color "branch"]
+       current = yellow reverse
+       local = yellow
+       remote = blue
+[color "diff"]
+       meta = blue bold
+       frag = yellow
+[color "status"]
+       untracked = yellow
+[merge]
+	ff = false
