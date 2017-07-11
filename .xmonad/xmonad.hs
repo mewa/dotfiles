@@ -16,7 +16,7 @@ baseConfig = def {
   borderWidth = 2,
   modMask = modKey,
   layoutHook = layoutsConfig,
-  terminal = "gnome-terminal"
+  terminal = "urxvt"
   }
   
 layoutsConfig = emptyBSP ||| Tall nmaster delta ratio ||| Full
@@ -38,5 +38,6 @@ main = do
       ("C-M-h", sendMessage $ ShrinkFrom L),
       ("C-M-l", sendMessage $ ShrinkFrom R),
       ("C-M-j", sendMessage $ ShrinkFrom U),
-      ("C-M-k", sendMessage $ ShrinkFrom D)]
+      ("C-M-k", sendMessage $ ShrinkFrom D),
+      ("M-c", spawn "chromium")]
                                                           )

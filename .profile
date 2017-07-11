@@ -5,6 +5,9 @@ fi
 PATH="$HOME/.local/bin:$PATH"
 
 alias sudo='sudo '
-alias ll='ls -l'
+alias ll='ls -l --color'
 alias la='ll -a'
 alias e='emacs'
+
+# fix for 'mighty' Java in tiling managers
+export _JAVA_AWT_WM_NONREPARENTING=1
