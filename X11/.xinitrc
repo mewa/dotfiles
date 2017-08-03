@@ -5,7 +5,8 @@ export SSH_AUTH_SOCK
 xrdb ~/.Xresources
 
 setxkbmap -option "ctrl:nocaps" &
-feh --randomize --bg-scale /usr/share/backgrounds/*
+feh --no-fehbg --randomize --bg-scale /usr/share/backgrounds/*
+redshift &>/dev/null &
 
 compton -b
 exec xmonad

@@ -3,8 +3,6 @@
 	email = marcin.k.chmiel@gmail.com
 [push]
 	default = simple
-[core]
-	editor = emacs -nw
 [alias]
 	ss = status
 	br = branch
@@ -25,3 +23,5 @@
        untracked = yellow
 [merge]
 	ff = false
+[pull]
+	ff = true

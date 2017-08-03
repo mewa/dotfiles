@@ -1,7 +1,11 @@
+# .bash_profile has higher priority, hence we need to load .profile manually
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
-if [ -z "$SSH_AUTH_SOCK" ]; then
-    eval $(ssh-agent)
-fi
+[[ $- != *i* ]] && return
+
+# interactive login shell, let's load .bashrc
+source "$HOME/.bashrc"
 
 pgrep 'startx' || startx
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
