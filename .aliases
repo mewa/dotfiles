@@ -2,7 +2,8 @@ alias sudo='sudo '
 alias ll='ls -l'
 alias la='ll -a'
 alias e='$EDITOR -a "" -nw'
-alias p='proj ~/projects'
+alias proj='PROJECTS_HOME=~/projects proj'
+alias p='proj'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then

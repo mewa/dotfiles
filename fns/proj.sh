@@ -1,36 +1,25 @@
 #!/bin/sh
 
 function proj() {
-    local dirs
+    fuzzycd $PROJECTS_HOME $@
+}
+
+function fuzzycd() {
     local dir
-    local len
-    local tmp
+    local path
     local base
-    local name
     
     [[ -z $1 ]] && cd $HOME/projects && return 0
 
     base=$1
     shift
-    name=$1
-    shift
-
-    dirs=$(find $base -mindepth 1 -maxdepth 1 -type d -iname "*$name*")
-    
-    for idir in $dirs; do
-	[[ -n $1 ]] && proj $idir $@
-	if [[ -z $1 ]]; then
-	    tmp=$(echo $idir | tr '/' '\n' | wc -l)
-	    if [[ $tmp -lt $len ]] || [[ -z $dir ]]; then
-	    	len=$tmp
-	    	dir=$idir
-	    fi
-	fi
+    while [[ -n $1 ]]; do
+	path=$path$1*
+	shift
     done
+    dir=$(find $base -ipath "*$path" -type d | awk -F / '{ printf("%d\t%s\n", NF, $0); }' | sort -n | head -n1 | cut -f2)
 
-    [[ -n $1 ]] && return
     [[ -z $dir ]] && return -1
     
-    echo Switching to $dir | grep -i "" --color=auto
-    cd $dir
+    echo Switching to $dir && cd $dir
 }
