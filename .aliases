@@ -5,6 +5,7 @@ alias e='$EDITOR -a "" -nw'
 alias proj='PROJECTS_HOME=~/projects proj'
 alias p='proj'
 alias fcd='fuzzycd .'
+alias runstack='stack exec $(ls | grep .cabal$ | xargs cat | grep executable | cut -d" " -f2)'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
