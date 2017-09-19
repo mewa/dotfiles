@@ -1,4 +1,8 @@
-*scrollBar: false
+! disable ctrl+shift swallowing
+URxvt.iso14755:		false
+URxvt.iso14755_52:	false
+
+*scrollBar:		false
 
 URxvt.font:	xft:Source Code Pro:size=10
 
