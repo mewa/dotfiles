@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 if [ ! -z $1 ]
 then
@@ -8,11 +8,14 @@ then
     fi
 fi
 
-ln -sv$FORCE $(pwd)/.bash* ~
-ln -sv$FORCE $(pwd)/.profile ~
-ln -sv$FORCE $(pwd)/.aliases ~
-ln -sv$FORCE $(pwd)/.xmonad ~
-ln -sv$FORCE $(pwd)/X11/.xinitrc ~
-ln -sv$FORCE $(pwd)/X11/.Xresources ~
-ln -sv$FORCE $(pwd)/.emacs.d ~
-ln -sv$FORCE $(pwd)/.gitconfig ~
+base=$(dirname $0)
+
+ln -sv$FORCE $base/.bash* ~
+ln -sv$FORCE $base/.profile ~
+ln -sv$FORCE $base/.aliases ~
+ln -sv$FORCE $base/.xmonad ~
+ln -sv$FORCE $base/X11/.xinitrc ~
+ln -sv$FORCE $base/X11/.Xresources ~
+rm -r$FORCE ~/.emacs.d
+ln -sv$FORCE $base/.emacs.d ~
+ln -sv$FORCE $base/.gitconfig ~
