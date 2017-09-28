@@ -6,6 +6,7 @@
 # interactive login shell, let's load .bashrc
 source "$HOME/.bashrc"
 
-pgrep 'startx' || startx
+# if it's a X11 environment - start it
+command -v startx && (pgrep 'startx' || startx)
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
