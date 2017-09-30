@@ -28,7 +28,7 @@ function fuzzycd() {
 	path=$path$1*
 	shift
     done
-    dir=$(find -L $base -ipath "*$path" -type d $maxdepth | awk -F / '{ printf("%d\t%s\n", NF, $0); }' | sort -n | head -n1 | cut -f2)
+    dir=$(find -L $base $maxdepth -ipath "*$path" -type d | awk -F / '{ printf("%d\t%s\n", NF, $0); }' | sort -n | head -n1 | cut -f2)
 
     [[ -z $dir ]] && return -1
     
