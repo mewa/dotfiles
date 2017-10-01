@@ -1,23 +1,33 @@
-import XMonad hiding ( (|||) )
-import XMonad.Layout.LayoutCombinators
-import XMonad.Layout.Spiral
-import XMonad.Layout.Accordion
-import XMonad.Layout.BinarySpacePartition
-import XMonad.Actions.Navigation2D
-import XMonad.Util.EZConfig
-import XMonad.Hooks.DynamicLog
-import XMonad.Util.Run
-import XMonad.Prompt.XMonad
-import Data.Monoid
-import System.IO
-import XMonad.Hooks.ManageDocks
-import Numeric
-import Control.Monad.Trans.Class
-import Control.Monad
-import XMonad.Util.Loggers
 import Control.Concurrent
+import Control.Monad
+import Control.Monad.Trans.Class
 import Data.List
+import Data.Monoid
+import Numeric
+import System.IO
 import System.Process
+import XMonad hiding ( (|||) )
+import XMonad.Actions.Navigation2D
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
+import XMonad.Layout.BinarySpacePartition
+import XMonad.Layout.LayoutCombinators
+import XMonad.ManageHook
+import XMonad.Prompt.XMonad
+import XMonad.StackSet
+import XMonad.Util.EZConfig
+import XMonad.Util.Loggers
+import XMonad.Util.Run
+
+launchTerminal ws = case peek ws of
+       Nothing -> runInTerm "" "$SHELL"
+       Just xid -> terminalInCwd xid
+
+terminalInCwd xid = let
+  hex = showHex xid " "
+  shInCwd = "'cd $(readlink /proc/$(ps --ppid $(xprop -id 0x" ++ hex ++ "_NET_WM_PID | cut -d\" \" -f3) -o pid=)/cwd) && $SHELL'"
+  in runInTerm "" $ "sh -c " ++ shInCwd
 
 modKey = mod4Mask
 
@@ -59,6 +69,7 @@ myConfig = navigation baseConfig
       ("C-M-j", sendMessage $ ShrinkFrom U),
       ("C-M-k", sendMessage $ ShrinkFrom D),
       ("M-f", sendMessage $ JumpToLayout "Full"),
+      ("S-M-<Return>", withWindowSet launchTerminal),
       ("M-c", spawn "chromium"),
       ("M-S-x", xmonadPrompt def),
       ("<XF86AudioRaiseVolume>", spawn "amixer sset Master 2%+"),
