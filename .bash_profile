@@ -7,6 +7,6 @@
 source "$HOME/.bashrc"
 
 # if it's a X11 environment - start it
-command -v startx && (pgrep 'startx' || startx)
+command -v startx &> /dev/null && (pgrep 'startx' &> /dev/null || startx)
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
