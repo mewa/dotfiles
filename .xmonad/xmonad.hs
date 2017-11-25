@@ -73,13 +73,15 @@ myConfig = navigation baseConfig
       ("S-M-<Return>", withWindowSet launchTerminal),
       ("M-c", spawn "chromium"),
       ("M-S-x", xmonadPrompt def),
-      ("<XF86AudioRaiseVolume>", spawn "amixer sset Master 2%+"),
-      ("<XF86AudioLowerVolume>", spawn "amixer sset Master 2%-"),
+      ("<XF86AudioRaiseVolume>", spawn "amixer -M sset Master 2%+"),
+      ("<XF86AudioLowerVolume>", spawn "amixer -M sset Master 2%-"),
       ("<XF86AudioMute>", spawn "amixer sset Master toggle")]
 
 main = do
+  let volCmd = pad "$(amixer -M sget Master | awk '/%/ {print $4;}' | tr -d '[]')"
   xbar <- spawnPipe $ "dzen2 -dock -w 700 -fn 'Hack:size=10' -x 0 -bg \\" ++ colorBg ++ " -ta l"
-  dateBar <- spawn $ "while [ 1 ]; do date | echo \"$(date) \"; sleep 1; done | dzen2 -dock -x 700 -fn 'Hack:size=10' -bg \\" ++ colorBg ++ " -ta r"
+  dateBar <- spawn $ "while [ 1 ]; do date | echo \"" ++ volCmd ++
+    "$(date) \"; sleep 1; done | dzen2 -dock -x 700 -fn 'Hack:size=10' -bg \\" ++ colorBg ++ " -ta r"
   xmonad $ docks myConfig {
     layoutHook = avoidStruts $ layoutHook myConfig,
     manageHook = manageDocks <+> manageHook myConfig, 
