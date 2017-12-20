@@ -32,3 +32,6 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 [ ! -s "~/.config/mpd/pid" ] && mpd &
+
+export GOPATH="$(echo ~/projects/go)"
+export PATH="$PATH:$GOPATH/bin"
