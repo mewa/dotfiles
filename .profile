@@ -16,6 +16,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 export ALTERNATIVE_EDITOR=""
 export EDITOR="emacsclient"
+export GIT_EDITOR="emacsclient -t"
 
 source $HOME/.aliases
 
