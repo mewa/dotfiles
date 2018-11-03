@@ -1,0 +1,15 @@
+// Polish ColemakDH
+// by Marcin Chmiel <m@marcinchmiel.com>
+//
+partial alphanumeric_keys
+xkb_symbols "colemak-dh" {
+    include "pl(colemak)"
+    name[Group1]= "Polish (ColemakDH)";
+
+    key <AB04> { [            d,            D ] };
+    key <AB05> { [            v,            V ] };
+    key <AB07> { [            h,            H ] };
+    key <AC05> { [            g,            G ] };
+    key <AC06> { [            m,            M ] };
+    key <AD05> { [            b,            B ] };
+};
