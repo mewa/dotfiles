@@ -54,6 +54,7 @@ if ! shopt -oq posix; then
 fi
 
 source ~/.dotfiles/fns/proj.sh
+source ~/.dotfiles/fns/pwdgrep.sh
 
 eval "$(stack --bash-completion-script stack)"
 
