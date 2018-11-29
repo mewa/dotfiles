@@ -33,6 +33,7 @@ terminalInCwd xid = let
 modKey = mod4Mask
 
 baseConfig = def {
+  normalBorderColor = colorNormal,
   focusedBorderColor = colorActive,
   borderWidth = 2,
   modMask = modKey,
@@ -99,4 +100,5 @@ myDzenPP = def {
   }
 
 colorBg = "#333333"
+colorNormal = "#3A372D"
 colorActive = "#ffc107"
