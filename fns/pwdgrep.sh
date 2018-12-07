@@ -17,8 +17,9 @@ function pwdgrep() {
     fi
 
     string=$1
+    local files=$(find $target -type f ! -path '*/.git/*')
     while [[ ! -z "$string" ]]; do
-        find $target -type f | xargs -I% grep -Hn --color=always "$string" "%"
+        echo "$files" | xargs -I% grep -Hn --color=always "$string" "%"
         shift
         string=$1
     done
