@@ -53,8 +53,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source ~/.dotfiles/fns/proj.sh
-source ~/.dotfiles/fns/pwdgrep.sh
+source <(cat ~/.dotfiles/fns/*.sh)
 export PATH="$PATH:~/.dotfiles/scripts"
 
 export ANDROID_HOME="/opt/android/sdk/"

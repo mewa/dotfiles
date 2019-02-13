@@ -22,4 +22,3 @@ source "$HOME/.bashrc"
 
 # if it's a X11 environment - start it
 command -v startx &> /dev/null && (pgrep 'startx' &> /dev/null || startx)
-
