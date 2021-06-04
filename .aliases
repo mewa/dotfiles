@@ -24,3 +24,13 @@ else # bsd-like
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+function _kns {
+    if [ -z "$1" ]; then
+        unset KUBENS
+    else
+        KUBENS="-n $1"
+    fi
+}
+
+alias k='kubectl ${KUBENS}'
+alias kns='_kns'
