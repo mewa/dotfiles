@@ -34,3 +34,5 @@ function _kns {
 
 alias k='kubectl ${KUBENS}'
 alias kns='_kns'
+alias stg='git diff --staged'
+alias amend='git commit --amend'
