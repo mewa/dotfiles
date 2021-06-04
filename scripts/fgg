@@ -1,0 +1,36 @@
+#!/bin/bash
+set -feo pipefail;
+
+function fgg() {
+    local target
+    local grep_args
+
+    if [[ "$#" -eq 0 ]]; then
+        echo Usage: fgg [TARGET] GREP_ARGS...
+    elif [[ "$#" -ge 2 ]]; then
+        target=$1
+        shift
+    else
+        target=.
+    fi
+
+    local OPTIND
+    local OPTARG
+    local find_args
+    find_args=
+    while getopts "n:" o; do
+        case "${o}" in
+            n)
+                find_args="-name ${OPTARG}"
+                ;;
+            *)
+                usage
+                ;;
+        esac
+    done
+    shift $((OPTIND-1))
+
+    find "$target" -type f $find_args ! -path '*/.git/*' -exec grep --color=always "$@" {} +
+}
+
+fgg "$@"
