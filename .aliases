@@ -7,6 +7,8 @@ alias p='proj -i'
 alias fcd='fuzzycd .'
 alias runstack='stack exec $(ls | grep .cabal$ | xargs cat | grep executable | cut -d" " -f2)'
 
+alias awsenv='env | grep -i aws'
+
 if [ $(uname) == 'Linux' ]; then
     # enable color support of ls and also add handy aliases
     if [ -x /usr/bin/dircolors ]; then
