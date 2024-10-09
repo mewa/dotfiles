@@ -1,3 +1,6 @@
+[core]
+        excludesFile = ~/.gitignore
+
 [user]
 	name = mewa
 	email = marcin.k.chmiel@gmail.com
