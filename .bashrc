@@ -57,8 +57,6 @@ source ~/.dotfiles/fns/proj.sh
 source ~/.dotfiles/fns/pwdgrep.sh
 export PATH="$PATH:~/.dotfiles/scripts"
 
-eval "$(stack --bash-completion-script stack)"
-
 export ANDROID_HOME="/opt/android/sdk/"
 export PATH="$PATH:/$ANDROID_HOME/platform-tools/"
 export PATH="$PATH:/$ANDROID_HOME/emulator/"
