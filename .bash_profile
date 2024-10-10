@@ -3,7 +3,13 @@
 
 [[ $- != *i* ]] && return
 
+if [[ `uname` == Darwin ]]; then
+    # bash completion on mac
+    [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
+    # homebrew setup
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # rbenv completion
 command -v rbenv &>/dev/null && eval "$(rbenv init - bash)"
