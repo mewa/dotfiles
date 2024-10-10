@@ -4,11 +4,12 @@
 [[ $- != *i* ]] && return
 
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # rbenv completion
 command -v rbenv &>/dev/null && eval "$(rbenv init - bash)"
+
+# nvm completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # interactive login shell, let's load .bashrc
 source "$HOME/.bashrc"
