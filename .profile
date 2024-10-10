@@ -18,7 +18,6 @@ export ALTERNATIVE_EDITOR=""
 export EDITOR="emacsclient"
 export GIT_EDITOR="emacsclient -t"
 
-source $HOME/.aliases
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -29,5 +28,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 export GOPATH="$(echo ~/projects/go)"
 export PATH="$PATH:$GOPATH/bin"
+
+source $HOME/.aliases
 
 pgrep emacs 1>/dev/null || emacs --daemon &
