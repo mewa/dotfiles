@@ -14,9 +14,8 @@ fi
 # fix for 'mighty' Java in tiling window managers
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-export ALTERNATIVE_EDITOR=""
+export ALTERNATE_EDITOR=""
 export EDITOR="emacsclient"
-export GIT_EDITOR="emacsclient -t"
 
 
 export NVM_DIR="$HOME/.nvm"
