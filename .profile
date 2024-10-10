@@ -30,4 +30,4 @@ export PATH="$PATH:$GOPATH/bin"
 
 source $HOME/.aliases
 
-pgrep emacs 1>/dev/null || emacs --daemon &
+pgrep -i 'emacs[^(client)]' 1>/dev/null || emacs --daemon &
