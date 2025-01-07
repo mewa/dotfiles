@@ -4,7 +4,7 @@ alias la='ll -a'
 alias e='$EDITOR -a "" -nw'
 alias proj='PROJECTS_HOME=~/projects proj'
 alias p='proj -i'
-alias fcd='fuzzycd .'
+alias fcd='fuzzycd -base'
 alias runstack='stack exec $(ls | grep .cabal$ | xargs cat | grep executable | cut -d" " -f2)'
 
 alias awsenv='env | grep -i aws'

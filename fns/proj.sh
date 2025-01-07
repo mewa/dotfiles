@@ -2,35 +2,44 @@
 
 function proj() {
     if [[ $1 == '-i' ]]; then
-	local d=2
 	shift
-	while ! MAXDEPTH=$d fuzzycd $PROJECTS_HOME $@; do
-	    d=$(($d+1))
-	    echo -n \.
-	done
-    else
-	fuzzycd $PROJECTS_HOME $@
     fi
+
+    fuzzycd $@
+}
+
+function get_path_pattern {
+    local path
+
+    path="$1"
+    shift
+
+    while [[ -n $1 ]]; do
+	path="$path $1"
+	shift
+    done
+
+    echo "$path"
 }
 
 function fuzzycd() {
-    local dir
     local path
     local base
-    local maxdepth
-    
-    [[ -z $1 ]] && cd $HOME/projects && return 0
-    [[ -n $MAXDEPTH ]] && maxdepth="-maxdepth $MAXDEPTH"
+    local bfs
+    local dir
 
-    base=$1
-    shift
-    while [[ -n $1 ]]; do
-	path=$path$1*
-	shift
-    done
-    dir=$(find -L $base $maxdepth -ipath "*$path" -type d | awk -F / '{ printf("%d\t%s\n", NF, $0); }' | sort -n | head -n1 | cut -f2)
+    if [[ $1 == "-base" ]]; then
+        echo base is base
+        base="${2:-.}"
+        shift
+        shift
+    else
+        base="$PROJECTS_HOME"
+    fi
 
-    [[ -z $dir ]] && return -1
-    
-    echo Switching to $dir && cd $dir
+    path=$(get_path_pattern "$@")
+    bfs="bfs -type d -s -L -exclude -name .git -exclude -name node_modules"
+    dir=$(cd "$base"; $bfs | fzf -e -i -q "$path" --no-sort --scheme=path --height ~30%)
+
+    echo Switching to "$base/$dir" && cd "$base/$dir"
 }
