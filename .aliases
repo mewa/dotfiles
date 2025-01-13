@@ -1,7 +1,7 @@
 alias sudo='sudo '
 alias ll='ls -l'
 alias la='ll -a'
-alias e='emacsclient -a "" -nw'
+alias e='$EDITOR -a "" -nw'
 alias proj='PROJECTS_HOME=~/projects proj'
 alias p='proj -i'
 alias fcd='fuzzycd -base'
