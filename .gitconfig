@@ -7,10 +7,15 @@
 [push]
 	default = simple
 [alias]
+        ch = checkout
+        c  = commit
 	ss = status
 	br = branch
 	l = log
 	lg = log --graph
+        full = lg --pretty=fuller
+        stat = diff --stat
+        pushbr = push -u origin HEAD
 [color]
 	ui = auto
 	diff = auto
@@ -28,3 +33,12 @@
 	ff = false
 [pull]
 	ff = true
+[core]
+	excludesfile = ~/.gitignore
+[blame]
+	coloring = highlightRecent
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

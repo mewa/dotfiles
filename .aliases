@@ -49,6 +49,7 @@ alias k='kubectl ${KUBECTX} ${KUBENS}'
 alias kns='_kns'
 alias kctx='_kctx'
 
+# git utils
 alias stg='git diff --staged'
 alias amend='git commit --amend'
 alias br="git br | grep -E '^\*' | cut -f2 -d' '"
