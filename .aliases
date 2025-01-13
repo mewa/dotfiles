@@ -47,3 +47,7 @@ alias kctx='_kctx'
 
 alias stg='git diff --staged'
 alias amend='git commit --amend'
+alias br="git br | grep -E '^\*' | cut -f2 -d' '"
+
+alias tf='terraform'
+alias npm='pnpm'
