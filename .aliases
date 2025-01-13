@@ -24,6 +24,7 @@ else # bsd-like
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
 function _kns {
     if [ -z "$1" ]; then
         unset KUBENS
@@ -32,7 +33,17 @@ function _kns {
     fi
 }
 
-alias k='kubectl ${KUBENS}'
+function _kctx {
+    if [ -z "$1" ]; then
+        unset KUBECTX
+    else
+        KUBECTX="--context $1"
+    fi
+}
+
+alias k='kubectl ${KUBECTX} ${KUBENS}'
 alias kns='_kns'
+alias kctx='_kctx'
+
 alias stg='git diff --staged'
 alias amend='git commit --amend'
