@@ -25,6 +25,8 @@ else # bsd-like
     alias egrep='egrep --color=auto'
 fi
 
+
+# Kubernetes utils
 function _kns {
     if [ -z "$1" ]; then
         unset KUBENS
@@ -40,6 +42,8 @@ function _kctx {
         KUBECTX="--context $1"
     fi
 }
+
+source <(command kubectl completion bash)
 
 alias k='kubectl ${KUBECTX} ${KUBENS}'
 alias kns='_kns'

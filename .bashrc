@@ -40,6 +40,7 @@ fi
 
 export PS1="\[$(tput bold)\]\[\033[38;5;10m\]\u\[$(tput sgr0)\]\[\033[38;5;7m\]@\[$(tput sgr0)\]\[\033[38;5;9m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;14m\]\W\[$(tput sgr0)\]\[\033[38;5;11m\]\\$\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
 
+source "$HOME/.dotfiles/fns/alias-completion.bash"
 source "$HOME/.aliases"
 
 # enable programmable completion features (you don't need to enable
@@ -54,6 +55,7 @@ if ! shopt -oq posix; then
 fi
 
 source <(cat ~/.dotfiles/fns/*.sh)
+source <(cat ~/.dotfiles/fns/*.bash)
 export PATH="$PATH:~/.dotfiles/scripts"
 
 export ANDROID_HOME="/opt/android/sdk/"
