@@ -1,0 +1,7 @@
+#!/bin/bash
+set -o pipefail
+
+LOCK_ID=$(terraform plan 2>&1 | grep '\sID:' | rev | cut -d' ' -f1 | rev)
+
+set -e
+terraform force-unlock -force "$LOCK_ID"
